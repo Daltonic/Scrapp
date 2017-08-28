@@ -1,0 +1,34 @@
+<div class="container-fluid" style="margin-top: 5%">
+
+  <% @search.try(flash[:alert] = "#{pluralize(@search.searched_products.count, "result")} found ") %>
+
+  <%= link_to "Back", root_path %>
+  <% if @search.searched_products.empty? %>
+      <p>No result found</p>
+  <% else %>
+      <% sum = 0 %>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Brand</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @search.searched_products.each do |p| %>
+            <tr>
+              <th scope="row"><%= sum += 1 %></th>
+              <td class="text-muted"><%= p.brand %></td>
+              <td class="text-primary name"><%= truncate(p.name, length: 120) %></td>
+              <td class="text-danger"><%= p.price %></td>
+              <td><%= link_to "Visit", p.link, class: "btn btn-sm btn-success", "target":"_blank" %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>

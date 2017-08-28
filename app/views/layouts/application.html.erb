@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scrapp</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+     <style>
+        <% if current_page? (root_path) %>
+          .alert{
+            box-shadow: 0 2px 7px 2px #B9BAAD;
+          }
+        <% end %>
+        <% if current_page? (new_user_session_path) %>
+          body{
+            background-color: #4d3c82;
+          }
+          header{
+            box-shadow: 0 8px 5px 0 rgba(121, 122, 122, 0);
+            border-bottom: 3px solid transparent;
+          }
+        <% end %>
+        <% if current_page? (new_user_registration_path) %>
+        body{
+          background-color: #4d3c82;
+        }
+        header{
+          box-shadow: 0 8px 5px 0 rgba(121, 122, 122, 0);
+          border-bottom: 3px solid transparent;
+        }
+        <% end %>
+     </style>
+  </head>
+
+  <body>
+  <header class="container-fluid">
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png",  class: "logo navbar-brand" %>
+    <% end %>
+    <% if user_signed_in? %>
+        <%= link_to "Logout", destroy_user_session_path, class: "login", method: :delete %>
+    <% else %>
+        <%= link_to "Login", new_user_session_path, class: "login" %>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="rate">
+        <h3><%= @rate.naira %></h3>
+        <p>USD - NGN</p>
+      </div>
+
+
+        <%= link_to new_search_path, { 'data-toggle': 'tooltip', 'data-placement': 'top', 'title': 'Advanced Search' } do %>
+            <%= image_tag 'filter.png' %>
+        <% end %>
+
+        <div class="form-group search-bar">
+          <%= form_tag scrappies_path, class:"input-group", method: :get do %>
+              <%= search_field_tag :search, params[:search], "type":"text", "class":"form-control", "placeholder":"Search everything..." %>
+              <%= submit_tag "Search", "class":"btn btn-success", "type":"submit", "id":"sub-mit" %>
+          <% end %>
+        </div>
+
+
+    <% end %>
+  </header>
+  <%= render partial: "layouts/flash_messages", flash: flash %>
+  <%= yield %>
+
+
+  <%#= render 'layouts/modal' %>
+
+  <script>
+      $(function () {
+          $('.alert').css({'left': '0'});
+          setTimeout(notice_slide, 3000);
+          $('.close').click(function () {
+              $('.alert').css({'left': '-26%'});
+          })
+          
+          function notice_slide() {
+              $('.alert').css({'left': '-26%'});
+          }
+      });
+  </script>
+  </body>
+</html>

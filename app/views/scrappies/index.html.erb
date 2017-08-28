@@ -1,0 +1,27 @@
+<div class="the-table container-fluid" data-example-id="hoverable-table">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Brand</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% sum = 0 %>
+    <% @products.try(flash[:alert] = "#{pluralize(@products.count, "record")} found ") unless current_page?(root_path) %>
+
+    <% @products.each do |product| %>
+        <tr>
+              <th scope="row"><%= sum += 1 %></th>
+              <td class="text-muted"><%= product.brand %></td>
+              <td class="text-primary name"><%= truncate(product.name, length: 120) %></td>
+              <td class="text-danger"><%= product.price %></td>
+              <td><%= link_to "Visit", product.link, class: "btn btn-sm btn-success", "target":"_blank" %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

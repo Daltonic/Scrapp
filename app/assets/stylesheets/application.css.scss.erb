@@ -1,0 +1,235 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "normalize";
+@import "variables";
+
+
+/*start styling...*/
+body{
+  font-family: 'Poppins', sans-serif;
+}
+header{
+  box-shadow: 0 8px 5px 0 rgba(121, 122, 122, 0.6);
+  border-bottom: 3px solid $light-purple;
+  margin-top: 0;
+  position: sticky;
+  left: 0;
+  top: 0;
+  background-color: white;
+  transition: all .3s linear;
+  .rate{
+    float: right;
+    margin-top: -8px;
+    h3, p{
+      color: $light-purple;
+    }
+    h3{
+      margin-bottom: 1px;
+    }
+    p{
+      letter-spacing: -1.2px;
+      font-size: 10px;
+    }
+  }
+  .login{
+    float: right;
+    margin-top: 27px;
+    font-size: 16px;
+    padding-left: 20px;
+    color: $light-purple;
+    &:hover{
+      color: lighten($light-purple, 40%);
+      transition: all .3s ease-in-out;
+      text-decoration: none;
+    }
+  }
+}
+
+.the-table{
+  padding: 70px 15px;
+}
+.navbar-brand{
+  height: 70px;
+}
+
+/*this marks the styling of the login page*/
+
+.login_wrapper{
+  text-align: -webkit-center;
+  text-align: -moz-center;
+  img{
+    margin-top: 3%;
+  }
+  .log_box{
+    width: 28%;
+    min-height: 320px;
+    height: auto;
+    background-color: white;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding-top: 25px;
+    overflow: hidden;
+    h5{
+      color: $dark-purple;
+      margin-top: 5px;
+      margin-bottom: 35px;
+    }
+    .form-box{
+      border: 1px solid $gray;
+      height: 45px;
+      border-radius: 3px;
+      background-color: $gray;
+      margin: 25px;
+      margin-bottom: -15px;
+      img{
+        float: left;
+        margin: 9px 10px;
+      }
+      input{
+        float: left;
+        height: 100%;
+        width: 87.1%;
+        border: transparent;
+        padding-left: 10px;
+        &:active, &:focus{
+          outline-color: transparent;
+        }
+      }
+    }
+  }
+}
+.icon-password{
+  width: 22px;
+}
+.form-password{
+  width: 287px;
+  padding-top: 10px;
+}
+.login-btn{
+  margin-top: 30px;
+  .btns{
+    background-image: -moz-linear-gradient( 0deg, rgb(68,47,116) 0%, rgb(126,63,155) 100%);
+    background-image: -webkit-linear-gradient( 0deg, rgb(68,47,116) 0%, rgb(126,63,155) 100%);
+    background-image: -ms-linear-gradient( 0deg, rgb(68,47,116) 0%, rgb(126,63,155) 100%);
+    padding: 8px 145px;
+    border-radius: 3px;
+    color: white;
+    width: 87%;
+    &:hover{
+      text-decoration: none;
+      color: $light-purple;
+      transition: all .3s ease-in-out;
+    }
+
+  }
+}
+.other-stuffs{
+  height: 70px;
+  width: 100%;
+  background-color: $gray;
+  margin-top: 20px;
+  p{
+    padding-top: 22px;
+  }
+}
+.copyrights{
+  color: white;
+  margin-top: 18px;
+}
+.font-italic{
+  color: $dark-purple;
+  font-style: italic;
+}
+.alert{
+  background-color: #5cb85c;
+  color: #ffffff;
+}
+.alert, .alert-alert, .alert-success, .alert-notice{
+  width: 25%;
+  position: absolute;
+  top: 13%;
+  left: -25%;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  transition: all .3s linear;
+}
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+.search-bar{
+  margin-top: 21px;
+  .input-group{
+    display: inline;
+    .form-control{
+      width: 60%;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+  }
+  #sub-mit{
+    background-color: #5cb85c;
+    color: white;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    &:hover{
+      background-color: #488f48;
+      outline: none;
+    }
+  }
+}
+.input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child){
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+
+.logo{
+  margin-right: 60px;
+}
+.name{
+  cursor: pointer;
+}
+img[alt="Filter"]{
+  width: 37px;
+  float: right;
+  margin-top: 16px;
+  margin-right: 15px;
+}
