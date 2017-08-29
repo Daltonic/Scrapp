@@ -21,6 +21,6 @@ class UpdateProductsJob < ApplicationJob
           end
         end
     end
-    puts sold_out
+    flash[:alert] = "#{sold_out} are now sold out!"
   end
 end

@@ -1,6 +1,6 @@
 <div class="container-fluid" style="margin-top: 5%">
 
-  <% @search.try(flash[:alert] = "#{pluralize(@search.searched_products.count, "result")} found ") %>
+  <% @search.try(flash[:alert] = "#{pluralize(@search.searched_products.count, "result")} found ") unless current_page? (root_path) %>
 
   <%= link_to "Back", root_path %>
   <% if @search.searched_products.empty? %>
@@ -24,7 +24,7 @@
               <th scope="row"><%= sum += 1 %></th>
               <td class="text-muted"><%= p.brand %></td>
               <td class="text-primary name"><%= truncate(p.name, length: 120) %></td>
-              <td class="text-danger"><%= p.price %></td>
+              <td class="text-danger"><%= number_to_currency(number_with_delimiter(p.price), unit: "₦ ") %></td>
               <td><%= link_to "Visit", p.link, class: "btn btn-sm btn-success", "target":"_blank" %></td>
             </tr>
         <% end %>

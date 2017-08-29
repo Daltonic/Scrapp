@@ -18,7 +18,7 @@
               <th scope="row"><%= sum += 1 %></th>
               <td class="text-muted"><%= product.brand %></td>
               <td class="text-primary name"><%= truncate(product.name, length: 120) %></td>
-              <td class="text-danger"><%= product.price %></td>
+              <td class="text-danger"><%= number_to_currency(number_with_delimiter(product.price), unit: "₦ ") %></td>
               <td><%= link_to "Visit", product.link, class: "btn btn-sm btn-success", "target":"_blank" %></td>
         </tr>
     <% end %>

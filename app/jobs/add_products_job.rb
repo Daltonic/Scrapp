@@ -11,14 +11,12 @@ class AddProductsJob < ApplicationJob
         data = Nokogiri::HTML(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
         @items = data.css('.sku')
           @items.each do |item|
-            checking = item.at_css('.price').css('span')[1].text[0..2].to_i
-            if checking >= 45
+            price = item.at_css('.price').css('span')[1].attributes["data-price"].value.to_i
+            if price >= 45000
               brand           = item.at_css('.brand').text
               name            = item.at_css('.name').text
-              price           = "₦ #{item.at_css('.price').css('span')[1].text}"
               link            = item.at_css('.link').attributes["href"].value
-              checker         = item.at_css('.price').css('span')[1].text[0..2].to_i
-              item_brand      = Product.find_or_initialize_by(brand:  brand, name: name, price: price, link: link, checker: checker)
+              item_brand      = Product.find_or_initialize_by(brand:  brand, name: name, link: link, price: price)
               item_brand.save!
             end
           end
