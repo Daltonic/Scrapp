@@ -23,7 +23,7 @@
             <tr>
               <th scope="row"><%= sum += 1 %></th>
               <td class="text-muted"><%= p.brand %></td>
-              <td class="text-primary name"><%= truncate(p.name, length: 120) %></td>
+              <td class="text-primary name"><%= truncate(p.name, length: 115) %></td>
               <td class="text-danger"><%= number_to_currency(number_with_delimiter(p.price), unit: "₦ ") %></td>
               <td><%= link_to "Visit", p.link, class: "btn btn-sm btn-success", "target":"_blank" %></td>
             </tr>
